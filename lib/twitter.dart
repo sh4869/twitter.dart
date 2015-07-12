@@ -1,28 +1,21 @@
 library twitter;
 
 import 'dart:async';
-import 'dart:convert' show JSON;
+
 import 'package:oauth/oauth.dart' as oauth;
 import 'package:http/http.dart' as http;
 
-class Twitter{
+import 'src/client.dart';
 
-	String baseUrl = 'https://api.twitter.com/1.1/';
+class Twitter {
 
-	String consumerKey;
-
-	String consumerSecret;
-
-	String accessToken;
-
-	String accessSecret;
+	final String baseUrl = 'https://api.twitter.com/1.1/';
 
 	oauth.Tokens oauthTokens;
 
-	oauth.Client oauthClient;
+	Client twitterClient;
 
-
-	Twitter._internal(this.oauthTokens,this.oauthClient);
+	Twitter._internal(this.oauthTokens,this.twitterClient);
 
 	factory Twitter(String consumerKey,String consumerSecret,String accessToken,String accessSecret){
 		oauth.Tokens oauthTokens = new oauth.Tokens(
@@ -30,38 +23,13 @@ class Twitter{
 				consumerKey: consumerSecret,
 				userId: accessToken,
 				userKey: accessSecret);
-		oauth.Client oauthClient = new oauth.Client(oauthTokens);
-		return new Twitter._internal(oauthTokens,oauthClient);
+		Client twitterClient = new Client(oauthTokens);
+		return new Twitter._internal(oauthTokens,twitterClient);
 	}
 
 
-	Future<String> request (String method,String endPoint,{Map body}) async {
+	Future<http.Response> request (String method,String endPoint,{Map body}) {
 		var requestUrl = baseUrl + endPoint;
-		switch (method){
-			case 'POST':
-				if(body != null){
-					var res = await oauthClient.post(requestUrl,body:body);
-					return res.body;
-				}else{
-					var res = await oauthClient.post(requestUrl);
-					return res.body;
-				}
-				break;
-			case 'GET':
-				if(body != null){
-					var res = await oauthClient.get(requestUrl,body:body);
-					return res.body;
-				}else{
-					var res = await oauthClient.get(requestUrl);
-					print(res.statusCode);
-					return res.body;
-				}
-				break;
-			default:
-				break;
-		}
+		return twitterClient.request(method, requestUrl, body:body);	
 	}
-
-
-
 }
