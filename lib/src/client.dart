@@ -10,10 +10,9 @@ class Client extends oauth.Client {
 	Client(oauth.Tokens tokens)
 		: super(tokens);
 
-	@override
-	Future<http.Response> get(url, {Map<String,String> headers, body, Encoding encoding}){
+	Future<http.Response> request(String method, url, {Map<String,String> headers, body, Encoding encoding})  {
 		if (url is String) url = Uri.parse(url);
-		var request = new http.Request("GET",url);
+		var request = new http.Request(method, url);
 
 		if (headers != null) request.headers.addAll(headers);
 		if (encoding != null) request.encoding = encoding;
