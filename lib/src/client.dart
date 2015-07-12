@@ -1,3 +1,5 @@
+/// A http Client extends [oauth.client] 
+
 library twitter.client;
 
 import 'dart:async';
@@ -7,9 +9,13 @@ import 'package:oauth/oauth.dart' as oauth;
 
 class Client extends oauth.Client {
 	
+	/// Constructs a new Client with [oauth.Tokens]
 	Client(oauth.Tokens tokens)
 		: super(tokens);
 
+	/// Send an HTTP request and Return [http.Response] with the given headers and body to the given
+    /// URL, which can be a [Uri] or a [String] and [method].
+	/// 	
 	Future<http.Response> request(String method, url, {Map<String,String> headers, body, Encoding encoding})  {
 		if (url is String) url = Uri.parse(url);
 		var request = new http.Request(method, url);
