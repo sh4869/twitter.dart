@@ -8,3 +8,5 @@ description: Twitter API Library
 dependencies:
   oauth: '>=0.3.0 <0.4.0'
   http: '>=0.11.2 <0.12.0'
+dev_dependencies:
+  test: '>=0.12.3+6 <0.13.0'
