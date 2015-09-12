@@ -1,4 +1,4 @@
-twitter.dart   [![Build Status](https://travis-ci.org/sh4869/twitter.dart.svg?branch=master)](https://travis-ci.org/sh4869/twitter.dart)  [![pub package](https://img.shields.io/pub/v/twitter.svg)](https://pub.dartlang.orig/packages/twitter)
+twitter.dart   [![Build Status](https://travis-ci.org/sh4869/twitter.dart.svg?branch=master)](https://travis-ci.org/sh4869/twitter.dart)  [![pub package](https://img.shields.io/pub/v/twitter.svg)](https://pub.dartlang.org/packages/twitter)
 ====
 
 This is a Client Library for Twitter in Dart.
