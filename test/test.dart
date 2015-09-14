@@ -10,6 +10,5 @@ main(){
 			envVars['ACCESS_TOKEN'],envVars['ACCESS_TOKEN_SECRET']);	
 		var response = await twitter.request("GET","statuses/user_timeline.json");
 		expect(response.body,isNotNull);
-		expect(response.statusCode,equals(200 || 201));
 	});
 }
