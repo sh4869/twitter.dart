@@ -6,6 +6,7 @@
 .pub/
 build/
 packages
+.packages
 
 # Or the files created by dart2js.
 *.dart.js
@@ -16,3 +17,4 @@ packages
 # Include when developing application packages.
 pubspec.lock
 
+doc/
