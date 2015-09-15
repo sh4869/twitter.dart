@@ -2,7 +2,7 @@ language: dart
 dart:
 - dev
 - stable
-script: "./tools/travis.sh"
+script: "./tool/travis.sh"
 env:
   global:
   - secure: l9oRqjGvnmoX/lNFgRSRxy3TYP3PPByUdD1dU0HuTO3lcKKa09qoMJQLIt8l7ajqPVDp+8JWvpOpeqioDVcERApFc2xZ45zlCdqd1ZY92yssYDZzQvXwrxnc9r75nyVTLVIwXehja/yR6n01RmDgT8A3NyXwDspswDQhZoGiwTrHm0YTFOE1RkI/SUCu3TLnZCt3pSem7WmdRpJm7KHDOxj0kNKiwvffWftsZtoV9tWh9i4IfPuPSO6mQCNlMpVFNonUAy7lWZ60hXMeMPdvWEk67rknxAM+3mJC3ryPf0FTPLAY9C+LVimzX08uoC+q+dt95sRUD7U0TitP732U1dbdV4rvR1DcLoe53UbW8qftlaST60zsEMqT1EHMFAnhc+2Cz5upeyg9bksCEsC55Hjnluk8RUcQU0h/Tdl3qNLFT/SVZ7I7tcFo4Am1WGgFkzP53gDJGS67TtWHJ2xHMuKKxcgpivnV/NANxIPZT2HrxXj9oHUQV8cYHHeSx7SrtSnvB6iYdisZrOuzQO/xP/dZ0qgfCvaktiwzdkpmm8yOkA+Tn08IwmR0DLREItLhGmKRv4IS09FVv8S3hGaWezmI/mU2PZGPzS2CjSFqnq0K+Wf2/CX/Ylw6MpXVT+hinIrAVF7SK4Wi83mVfqtDeU4wc5jMun4zGZXZclsoyxk=
