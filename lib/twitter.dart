@@ -9,7 +9,6 @@ import 'src/client.dart';
 
 /// A Class for Twitter
 class Twitter {
-
   /// Twitter API Endpoint
   final String baseUrl = 'https://api.twitter.com/1.1/';
 
@@ -40,6 +39,17 @@ class Twitter {
   /// [body] is HTTP Request's body.
   Future<http.Response> request(String method, String endPoint, {Map body}) {
     var requestUrl = baseUrl + endPoint;
-    return twitterClient.request(method, requestUrl, body: body);
+    var _completer = new Completer();
+
+    twitterClient.request(method, requestUrl, body: body).then((response) {
+      twitterClient.close();
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        _completer.complete(response);
+      } else {
+        _completer.completeError(response);
+      }
+    });
+    return _completer.future;
   }
+
 }

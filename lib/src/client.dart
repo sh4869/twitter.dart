@@ -9,7 +9,6 @@ import 'package:http/http.dart' as http;
 import 'package:oauth/oauth.dart' as oauth;
 
 class Client extends oauth.Client {
-
   /// Constructs a new Client with [oauth.Tokens]
   Client(oauth.Tokens tokens) : super(tokens);
 
@@ -36,5 +35,11 @@ class Client extends oauth.Client {
     }
 
     return super.send(request).then(http.Response.fromStream);
+  }
+
+  /// Close Internal Client
+  @override
+  void close() {
+    client.close();
   }
 }
