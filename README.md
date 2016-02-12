@@ -1,9 +1,10 @@
-twitter.dart   [![Build Status](https://travis-ci.org/sh4869/twitter.dart.svg?branch=master)](https://travis-ci.org/sh4869/twitter.dart)  [![pub package](https://img.shields.io/pub/v/twitter.svg)](https://pub.dartlang.org/packages/twitter)
-====
+twitter.dart 
+===
 
-This is a Client Library for Twitter in Dart.
+[![Build Status](https://travis-ci.org/sh4869/twitter.dart.svg?branch=master)](https://travis-ci.org/sh4869/twitter.dart)   
+[![pub package](https://img.shields.io/pub/v/twitter.svg)](https://pub.dartlang.org/packages/twitter)
 
-This library is developing now.
+Client Library for Twitter in Dart.
 
 ## Example
 
@@ -25,10 +26,4 @@ add the following to your pubspec.yaml:
 ```yaml
 dependencies:
   twitter: "0.1.0"
-```
-
-or Use [den](https://github.com/seaneagan/den) 
-
-```
-den install twitter
 ```
