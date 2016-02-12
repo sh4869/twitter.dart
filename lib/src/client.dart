@@ -1,13 +1,10 @@
-/// A http Client extends [oauth.client]
-
-library twitter.client;
-
 import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:oauth/oauth.dart' as oauth;
 
+/// A http Client extends [oauth.client]
 class Client extends oauth.Client {
   /// Constructs a new Client with [oauth.Tokens]
   Client(oauth.Tokens tokens) : super(tokens);

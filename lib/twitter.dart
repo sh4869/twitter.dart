@@ -1,5 +1,3 @@
-library twitter;
-
 import 'dart:async';
 
 import 'package:oauth/oauth.dart' as oauth;
