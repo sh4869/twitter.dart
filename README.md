@@ -27,15 +27,6 @@ main () {
                  "accessToken" : "YOUR ACCESS TOKEN",
                 "accessSecret" : "YOUR ACCESS SECRET"};
   Twitter twitter = new Twitter.fromMap(keyMap);
-``
-
-## Getting Start
-
-add the following to your pubspec.yaml:
-
-```yaml
-dependencies:
-  twitter: "0.2.0"
 ```
 
 ## LICENSE
