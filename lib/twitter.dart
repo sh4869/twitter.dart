@@ -32,6 +32,26 @@ class Twitter {
     return new Twitter._internal(oauthTokens, twitterClient);
   }
 
+  /// Create a new [Twitter] instance from Map.
+  ///
+  /// ```dart
+  /// Map keymap = {"consumerKey" : "YOUR CONSUMER KEY",
+  ///               "consumerSecret" : "YOUR CONSUMER SECRET",
+  ///               "accessToken" : "YOUR ACCESS TOKEN",
+  ///               "accessSecret" : "YOUR ACCESS SECRET"};
+  /// Twitter twitter = new Twitter.fromMap(keyMap);
+  ///```
+  ///
+  factory Twitter.fromMap(Map keyMap) {
+    oauth.Tokens oauthTokens = new oauth.Tokens(
+        consumerId: keyMap['consumerKey'],
+        consumerKey: keyMap['consumerSecret'],
+        userId: keyMap['accessToken'],
+        userKey: keyMap['accessSecret']);
+    Client twitterClient = new Client(oauthTokens);
+    return new Twitter._internal(oauthTokens, twitterClient);
+  }
+
   /// send a request to Twitter
   ///
   /// [method] is HTTP method name, for example "GET" , "POST".
@@ -51,5 +71,4 @@ class Twitter {
     });
     return _completer.future;
   }
-
 }
