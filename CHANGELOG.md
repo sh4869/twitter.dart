@@ -1,3 +1,9 @@
+## 0.3.0
+
+* Update dependencies
+  * OAuth.dart -  using random.secure function for generate randombytes
+* Fix README
+
 ## 0.2.0
 
 * Remove library tag
@@ -6,7 +12,7 @@
 
 ## 0.1.1
 
-* Fix problem that a delay occurs 
+* Fix problem that a delay occurs
 * Using Completer for Error Processing
 
 ## 0.1.0
