@@ -4,6 +4,9 @@ import 'package:oauth/oauth.dart' as oauth;
 import 'package:http/http.dart' as http;
 
 import 'src/client.dart';
+import 'src/twitter_stream.dart';
+
+export 'src/twitter_stream.dart';
 
 /// A Class for Twitter
 class Twitter {
@@ -68,5 +71,13 @@ class Twitter {
       }
     });
     return _completer.future;
+  }
+
+  /// Connect to Twitter User Stream
+  Future<TwitterStream> getUserStream() async {
+    Uri uri = Uri.parse("https://userstream.twitter.com/1.1/user.json");
+    var request = new http.Request("GET", uri);
+    var response = await twitterClient.send(request);
+    return new TwitterStream(response.stream.toStringStream());
   }
 }
