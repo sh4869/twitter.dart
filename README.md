@@ -7,6 +7,8 @@ Twitter Library for Dart.
 
 ## Example
 
+### REST API
+
 ```dart
 import 'package:twitter/twitter.dart';
 
@@ -18,7 +20,7 @@ main () async {
 }
 ```
 
-or,
+### STREAM API
 
 ```dart
 Map keymap = {"consumerKey" : "YOUR CONSUMER KEY",
@@ -26,7 +28,17 @@ Map keymap = {"consumerKey" : "YOUR CONSUMER KEY",
               "accessToken" : "YOUR ACCESS TOKEN",
               "accessSecret" : "YOUR ACCESS SECRET"};
 Twitter twitter = new Twitter.fromMap(keyMap);
+
+TwitterStream userstream = await twitter.getStream();
+userstream.listen((tweet) {
+  print(tweet["text"]);
+});
 ```
+## TODO
+
+* Write more detailed Example
+* Support Twitter Model
+* Support Stream Event 
 
 ## LICENSE
 
