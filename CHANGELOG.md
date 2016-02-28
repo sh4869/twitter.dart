@@ -1,3 +1,7 @@
+## 0.3.1
+
+* Fix sdk version
+
 ## 0.3.0
 
 * Update dependencies
