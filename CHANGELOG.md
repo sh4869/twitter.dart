@@ -1,3 +1,7 @@
+## 0.4.0
+
+* Support Twitter Streaming API
+
 ## 0.3.1
 
 * Fix sdk version
