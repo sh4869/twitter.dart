@@ -1,4 +1,4 @@
-twitter.dart 
+twitter.dart
 ===
 
 [![Build Status](https://travis-ci.org/sh4869/twitter.dart.svg?branch=master)](https://travis-ci.org/sh4869/twitter.dart) [![pub package](https://img.shields.io/pub/v/twitter.svg)](https://pub.dartlang.org/packages/twitter)
@@ -21,12 +21,11 @@ main () async {
 or,
 
 ```dart
-main () {
-  Map keymap = {"consumerKey" : "YOUR CONSUMER KEY",
-                 "consumerSecret" : "YOUR CONSUMER SECRET",
-                 "accessToken" : "YOUR ACCESS TOKEN",
-                "accessSecret" : "YOUR ACCESS SECRET"};
-  Twitter twitter = new Twitter.fromMap(keyMap);
+Map keymap = {"consumerKey" : "YOUR CONSUMER KEY",
+              "consumerSecret" : "YOUR CONSUMER SECRET",
+              "accessToken" : "YOUR ACCESS TOKEN",
+              "accessSecret" : "YOUR ACCESS SECRET"};
+Twitter twitter = new Twitter.fromMap(keyMap);
 ```
 
 ## LICENSE
