@@ -1,3 +1,7 @@
+## 0.4.1
+
+* Update OAuth.dart
+
 ## 0.4.0
 
 * Support Twitter Streaming API
