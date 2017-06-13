@@ -6,10 +6,7 @@ environment:
   sdk: '>=1.4.0 <2.0.0'
 description: Twitter API Library
 dependencies:
-  oauth:
-    git:
-      url: git://github.com/sh4869/oauth.dart.git
-      ref: random-secure
+  oauth: '^0.4.0'
   http: '>=0.11.2 <0.12.0'
 dev_dependencies:
   test: '>=0.12.3+6 <0.13.0'
