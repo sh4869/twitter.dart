@@ -1,3 +1,8 @@
+## 0.5.0
+
+* Fix error on strong mode
+* Add Example
+
 ## 0.4.1
 
 * Update OAuth.dart
