@@ -67,7 +67,7 @@ class Twitter {
       if (response.statusCode == 200 || response.statusCode == 201) {
         _completer.complete(response);
       } else {
-        _completer.completeError(response);
+        _completer.completeError(response.reasonPhrase);
       }
     });
     return _completer.future;
