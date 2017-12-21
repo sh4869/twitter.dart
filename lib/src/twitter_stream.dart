@@ -21,7 +21,7 @@ class TwitterStream extends Stream<Object> {
   }
 
   StreamSubscription<Object> listen(void onData(Object tweet),
-      {void onError(Error error), void onDone(), bool cancelOnError}) {
+      {Function onError, void onDone(), bool cancelOnError}) {
     return _controller.stream.listen(onData,
         onError: onError, onDone: onDone, cancelOnError: cancelOnError);
   }
