@@ -12,7 +12,7 @@ class Client extends oauth.Client {
   /// Send an HTTP request and Return [http.Response] with the given headers and body to the given
   /// URL, which can be a [Uri] or a [String] and [method].
   Future<http.Response> request(String method, url,
-      {Map<String, String> headers, body, Encoding encoding}) {
+      {Map<String, String> headers, body, Encoding encoding}) async {
     if (url is String) url = Uri.parse(url);
 
     var request = new http.Request(method, url);
@@ -31,7 +31,8 @@ class Client extends oauth.Client {
       }
     }
 
-    return super.send(request).then(http.Response.fromStream);
+    var response = await super.send(request);
+    return http.Response.fromStream(response);
   }
 
   /// Close Internal Client

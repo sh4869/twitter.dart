@@ -26,4 +26,18 @@ main() {
     var response = await twitter.request("GET", "statuses/user_timeline.json");
     expect(response.body,isNotNull);
   });
+  // mulitple request test #5
+  test("mulitple request test",() async {
+    var envVars = Platform.environment;
+    Map keyMap = {
+      "consumerKey": envVars['CONSUMER_KEY'],
+      "consumerSecret": envVars['CONSUMER_SECRET'],
+      "accessToken": envVars['ACCESS_TOKEN'],
+      "accessSecret": envVars['ACCESS_TOKEN_SECRET']
+    };
+    var twitter = new Twitter.fromMap(keyMap);
+    var response = await twitter.request("GET", "statuses/user_timeline.json");
+    var response2 = await twitter.request("GET", "statuses/user_timeline.json");
+    expect(response.body, isNotNull);
+  });
 }
