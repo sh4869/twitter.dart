@@ -19,6 +19,9 @@ class Twitter {
   /// An HTTP Client
   Client twitterClient;
 
+  Completer _completer = new Completer.sync();
+  int _counter = 0;
+
   Twitter._internal(this.oauthTokens, this.twitterClient);
 
   /// Creates a new [Twitter] instance from [consumerKey],[consumerSecret],[accessToken],[accessSecret]
@@ -59,18 +62,29 @@ class Twitter {
   /// [endPoint] is REST API Name of Twitter. for example "statuses/mentions_timeline.json".
   /// [body] is HTTP Request's body.
   Future<http.Response> request(String method, String endPoint, {Map body}) {
+    _counter++;
+    if (_completer.isCompleted) {
+      _completer = new Completer.sync();
+    }
     var requestUrl = baseUrl + endPoint;
-    var _completer = new Completer();
-
-    twitterClient.request(method, requestUrl, body: body).then((response) {
-      twitterClient.close();
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        _completer.complete(response);
-      } else {
-        _completer.completeError(response.reasonPhrase);
-      }
-    });
+    _request(method, requestUrl, body: body);
     return _completer.future;
+  }
+
+  Future _request(String method, String requestUrl, {Map body}) async {
+    if(twitterClient.client == null){
+      twitterClient = new Client(oauthTokens);
+    }
+    var response = await twitterClient.request(method, requestUrl, body: body);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      _completer.complete(response);
+    } else {
+      _completer.completeError(response.reasonPhrase);
+    }
+    _counter--;
+    if(_counter == 0){
+      twitterClient.close();
+    }
   }
 
   /// Connect to Twitter User Stream
