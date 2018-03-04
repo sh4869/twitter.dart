@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:twitter/twitter.dart';
 
-main(){
+main() {
   var envVars = Platform.environment;
   print(envVars['CONSUMER_KEY']);
   print(envVars['CONSUMER_SECRET']);
@@ -13,9 +13,10 @@ main(){
       "accessToken": envVars['ACCESS_TOKEN'],
       "accessSecret": envVars['ACCESS_TOKEN_SECRET']
   };
-  var twitter = new Twitter.fromMap(map);
+  Twitter twitter = new Twitter.fromMap(map);
+  
   try {
-    var a = twitter.request("GET", "statuses/home_timeline.json");
+    var a = twitter.request("POST", "statuses/update.json",body: {"status":"test"});
     a.then((value){
       new File("test.json").writeAsString(value.body);
     });
