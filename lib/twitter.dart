@@ -19,7 +19,7 @@ class Twitter {
   /// An HTTP Client
   Client twitterClient;
 
-  Completer _completer = new Completer.sync();
+  Completer<http.Response> _completer = new Completer<http.Response>.sync();
   int _counter = 0;
 
   Twitter._internal(this.oauthTokens, this.twitterClient);
@@ -64,14 +64,14 @@ class Twitter {
   Future<http.Response> request(String method, String endPoint, {Map body}) {
     _counter++;
     if (_completer.isCompleted) {
-      _completer = new Completer.sync();
+      _completer = new Completer<http.Response>.sync();
     }
     var requestUrl = baseUrl + endPoint;
     _request(method, requestUrl, body: body);
     return _completer.future;
   }
 
-  Future _request(String method, String requestUrl, {Map body}) async {
+  _request(String method, String requestUrl, {Map body}) async {
     if(twitterClient.client == null){
       twitterClient = new Client(oauthTokens);
     }
