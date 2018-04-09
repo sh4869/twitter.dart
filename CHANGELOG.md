@@ -1,5 +1,9 @@
 ## 0.5.1
 
+* Fix error on strong mode on dart2
+
+## 0.5.1
+
 * Fix error on mulitple request ([#5](https://github.com/sh4869/twitter.dart/issues/5))
 
 ## 0.5.0
