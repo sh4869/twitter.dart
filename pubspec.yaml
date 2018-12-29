@@ -1,7 +1,7 @@
 name: twitter
 author: sh4869 <nobuk4869@gmail.com> # name <email>
 homepage: https://github.com/sh4869/twitter.dart # https://github.com/user/repo
-version: 0.5.1
+version: 1.0.0
 environment:
   sdk: ">=2.1.0 <3.0.0"
 description: Twitter API Library
