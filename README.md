@@ -17,29 +17,19 @@ main () async {
                     'YOUR ACCESS TOKEN', 'YOUR ACCESS TOKEN SECERT');
   var response = await twitter.request("GET", "statuses/user_timeline.json");
   print(response.body);
+  twitter.close();
 }
 ```
 
-### STREAM API
-
-```dart
-Map keymap = {"consumerKey" : "YOUR CONSUMER KEY",
-              "consumerSecret" : "YOUR CONSUMER SECRET",
-              "accessToken" : "YOUR ACCESS TOKEN",
-              "accessSecret" : "YOUR ACCESS SECRET"};
-Twitter twitter = new Twitter.fromMap(keyMap);
-
-TwitterStream userstream = await twitter.getStream();
-userstream.listen((tweet) {
-  print(tweet["text"]);
-});
-```
 ## TODO
 
 * Write more detailed Example
 * Support Twitter Model
-* Support Stream Event 
 
 ## LICENSE
 
 MIT LICENSE
+
+# oauth.dart
+
+In this library, use oauth.dart in [My repository](https://github.com/sh4869/oauth.dart/tree/develop). I fix it by develop original oauth 1 library.
