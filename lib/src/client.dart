@@ -22,16 +22,16 @@ class Client extends oauth.Client {
     if (body != null) {
       if (body is String) {
         request.body = body;
-      } else if (body is List) {
+      } else if (body is List<int>) {
         request.bodyBytes = body;
-      } else if (body is Map) {
+      } else if (body is Map<String, String>) {
         request.bodyFields = body;
       } else {
         throw new ArgumentError('Invalid request body "$body".');
       }
     }
 
-    var response = await super.send(request);
+    final response = await super.send(request);
     return http.Response.fromStream(response);
   }
 

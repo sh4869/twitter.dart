@@ -4,9 +4,6 @@ import 'package:oauth/oauth.dart' as oauth;
 import 'package:http/http.dart' as http;
 
 import 'src/client.dart';
-import 'src/twitter_stream.dart';
-
-export 'src/twitter_stream.dart';
 
 /// A Class for Twitter
 class Twitter {
@@ -19,8 +16,7 @@ class Twitter {
   /// An HTTP Client
   Client twitterClient;
 
-  Completer _completer = new Completer.sync();
-  int _counter = 0;
+  Completer<http.Response> _completer = new Completer.sync();
 
   Twitter._internal(this.oauthTokens, this.twitterClient);
 
@@ -61,8 +57,8 @@ class Twitter {
   /// [method] is HTTP method name, for example "GET" , "POST".
   /// [endPoint] is REST API Name of Twitter. for example "statuses/mentions_timeline.json".
   /// [body] is HTTP Request's body.
-  Future<http.Response> request(String method, String endPoint, {Map body}) {
-    _counter++;
+  Future<http.Response> request(String method, String endPoint,
+      {Map<String, String> body}) {
     if (_completer.isCompleted) {
       _completer = new Completer.sync();
     }
@@ -71,8 +67,8 @@ class Twitter {
     return _completer.future;
   }
 
-  Future _request(String method, String requestUrl, {Map body}) async {
-    if(twitterClient.client == null){
+  void _request(String method, String requestUrl, {Map body}) async {
+    if (twitterClient.client == null) {
       twitterClient = new Client(oauthTokens);
     }
     var response = await twitterClient.request(method, requestUrl, body: body);
@@ -81,17 +77,9 @@ class Twitter {
     } else {
       _completer.completeError(response.reasonPhrase);
     }
-    _counter--;
-    if(_counter == 0){
-      twitterClient.close();
-    }
   }
 
-  /// Connect to Twitter User Stream
-  Future<TwitterStream> getUserStream() async {
-    Uri uri = Uri.parse("https://userstream.twitter.com/1.1/user.json");
-    var request = new http.Request("GET", uri);
-    var response = await twitterClient.send(request);
-    return new TwitterStream(response.stream.toStringStream());
+  void close() {
+    twitterClient.close();
   }
 }
