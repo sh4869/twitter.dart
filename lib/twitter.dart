@@ -60,7 +60,7 @@ class Twitter {
   Future<http.Response> request(String method, String endPoint,
       {Map<String, String> body}) {
     if (_completer.isCompleted) {
-      _completer = new Completer.sync();
+      _completer = new Completer<http.Response>.sync();
     }
     var requestUrl = baseUrl + endPoint;
     _request(method, requestUrl, body: body);
